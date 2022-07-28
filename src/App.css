@@ -1,5 +1,19 @@
 .App {
   text-align: center;
+  background-color: black;
+  width: 80%;
+  height: 600px;
+  margin: auto;
+}
+
+.App-container{
+  background-color: lightseagreen;
+  margin: auto;
+  width: 40%;
+  /* max-height: 200px; */
+  /* overflow: auto; */
+  padding: 10px;
+  box-shadow: 10px 10px lightskyblue;
 }
 
 .App-logo {
