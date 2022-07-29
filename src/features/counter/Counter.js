@@ -24,13 +24,15 @@ const Counter = () => {
       <br></br>
       <h3>Change by amount</h3>
       <input value={amount} onChange={(e) => setAmount(e.target.value)} />
-      <button onClick={() => dispatch(incrementByAmount(Number(amount)))}>
-        Add
-      </button>
       <br></br>
-      <button onClick={() => dispatch(decrementByAmount(Number(amount)))}>
-        Subtract
-      </button>      
+      <div className="btns">
+        <button onClick={() => dispatch(incrementByAmount(Number(amount)))}>
+          Add
+        </button>
+        <button onClick={() => dispatch(decrementByAmount(Number(amount)))}>
+          Subtract
+        </button>
+      </div>
     </div>
   );
 };
