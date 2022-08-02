@@ -46,6 +46,7 @@ function Todo() {
         <input
           minLength="4"
           maxLength="8"
+          title="input should be between 4 and 8"
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
