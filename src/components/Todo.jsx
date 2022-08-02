@@ -11,8 +11,12 @@ const reducer = (todos, action) => {
       return todos.map((todo) => {
         if (todo.id === action.payload.id)
           return { ...todo, completed: !todo.completed };
+        return todo;
       });
-    }
+      }
+      case "deleteTodo": {
+          return todos.filter((todo) => todo.id !== action.payload.id)
+          }
     default:
       return todos;
   }
@@ -40,6 +44,8 @@ function Todo() {
       <h1>My Todo App</h1>
       <form onSubmit={handleSubmit} action="">
         <input
+          minLength="4"
+          maxLength="8"
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
