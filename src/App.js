@@ -1,18 +1,20 @@
-import "./App.css";
+// import "./App.css";
 // import Counter from "./components/Counter";
 // import CounterUseReducer from "./components/CounterUseReducer";
 import Todo from "./components/Todo";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 // import Display from "./features/counter/Display";
 
 function App() {
   return (
     <div className="App">
-      <div className="App-container">
-        {/* <CounterUseReducer />
+      {/* <CounterUseReducer />
         <Counter /> */}
-        <Todo />
-        {/* <Display /> */}
-      </div>
+      <Header />
+      <Todo />
+      <Footer />
+      {/* <Display /> */}
     </div>
   );
 }
