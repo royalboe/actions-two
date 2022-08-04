@@ -1,4 +1,5 @@
 import React, { useReducer, useState, useEffect } from "react";
+// import { FaTrashAlt } from "react-icons/fa";
 // import { bindActionCreators } from "@reduxjs/toolkit";
 import TodoList from "./TodoList";
 
@@ -8,11 +9,14 @@ const reducer = (todos, action) => {
       return [...todos, newTodo(action.payload.input)];
     }
     case "markTodo": {
-      return todos.map((todo) => {
-        if (todo.id === action.payload.id)
-          return { ...todo, completed: !todo.completed };
-        return todo;
-      });
+          return todos.map(
+            (todo) => 
+              {
+                if (todo.id === action.payload.id)
+                  return { ...todo, completed: !todo.completed };
+                return todo;
+              }
+          );
       }
       case "deleteTodo": {
           return todos.filter((todo) => todo.id !== action.payload.id)
