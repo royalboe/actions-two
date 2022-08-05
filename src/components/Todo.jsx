@@ -4,6 +4,8 @@ import React, { useReducer, useState, useEffect } from "react";
 import TodoList from "./TodoList";
 import Card from "react-bootstrap/Card";
 
+
+
 const reducer = (todos, action) => {
   switch (action.type) {
     case "addTodo": {
@@ -21,8 +23,7 @@ const reducer = (todos, action) => {
     }
     case "editTodo": {
       return todos.map((todo) => {
-        if (todo.id === action.payload.id)
-          return { ...todo, input: prompt("change the todo: ") };
+        if (todo.id === action.payload.id) return { ...todo, input: action.payload.input };
         return todo;
       });
     }
@@ -30,6 +31,7 @@ const reducer = (todos, action) => {
       return todos;
   }
 };
+
 
 const newTodo = (value) => {
   return { id: Date.now(), input: value, completed: false };
@@ -44,9 +46,14 @@ function Todo() {
     // console.log(input);
   };
 
-  useEffect(() => {
-    console.log(todos);
-  }, [todos]);
+  useEffect(() => {})
+  // useEffect(() => {
+  //   if (localStorage) {
+      
+  //   }
+  //   console.log(todos);
+  //   localStorage.setTodoArray();
+  // }, [todos]);
 
   return (
     <main>
