@@ -74,22 +74,11 @@ jobs:
           name: dist-files
           path: dist
 
-  reuse_workflow:
+  deploy:
     needs: build
     uses: ./.github/workflows/reusable.yaml
-
-  deploy: 
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist-files
-      - name: Output contents
-        run: ls
-      - name: Deploy
-        run: echo "Deploying...."
+    with:
+      artifact-name: dist-files
 
   report:
     needs: [lint, deploy]
