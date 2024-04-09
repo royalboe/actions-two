@@ -1,5 +1,5 @@
 name: Website Deployment
-on: workflow_dispatch
+on: [push, workflow_dispatch]
   # push:
   #   branches:
   #     - main
@@ -73,6 +73,10 @@ jobs:
         with:
           name: dist-files
           path: dist
+
+  reuse_workflow:
+    needs: build
+    uses: ./.github/workflows/reusable.yaml
 
   deploy: 
     needs: build
