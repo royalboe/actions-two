@@ -59,7 +59,7 @@ jobs:
         id: build-website
         run: npm run build
       - name: Upload Artifacts
-        uses: actions/upload-artifacts@v4
+        uses: actions/upload-artifact@v4
         with:
           name: dist-files
           path: dist
@@ -69,14 +69,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get build artifacts
-        uses: actions/download-artifacts
+        uses: actions/download-artifact@v4
         with:
           name: dist-files
       - name: Output contents
         run: ls
       - name: Deploy
-        run: |        
-          echo "MONGODB_USERNAME: ${{ secrets.MONGODB_PASSWORD }}"
-          echo "Deploying...."
+        run: echo "Deploying...."
 
 
