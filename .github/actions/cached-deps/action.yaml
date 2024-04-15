@@ -1,9 +1,15 @@
 name: 'Get and Cache Dependencies'
 description: 'Get dependencies and cache them'
+inputs:
+  caching:
+    description: 'Cache or not cache dependencies'
+    required: false
+    default: 'true'
 runs:
   using: 'composite'
   steps:
     - name: Cache dependencies
+      if: inputs.caching == 'true'
       id: cache
       uses: actions/cache@v4
       with:
@@ -11,6 +17,6 @@ runs:
         key: node_modules-deps-${{ hashFiles('**/package-lock.json') }}
       # This runs only when we don't have a cached npm folder
     - name: Install dependencies
-      if: steps.cache.outputs.cache-hit != 'true'
+      if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true'
       run: npm ci
       shell: bash
