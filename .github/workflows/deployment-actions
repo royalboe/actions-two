@@ -1,5 +1,5 @@
-name: Website Deployment
-on: workflow_dispatch
+name: Website Deployment Composite Actions
+on: [push, workflow_dispatch]
   # push:
   #   branches:
   #     - main
@@ -10,16 +10,8 @@ jobs:
     steps:
       - name: Get Code
         uses: actions/checkout@v4
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: node_modules-deps-${{ hashFiles('**/package-lock.json') }}
-      # This runs only when we don't have a cached npm folder
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+      - name: Load and Cache Dependencies
+        uses: ./.github/actions/cached-deps
       - name: Lint code
         run: npm run lint
   
@@ -28,16 +20,8 @@ jobs:
     steps:
       - name: Get Code
         uses: actions/checkout@v4
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: node_modules-deps-${{ hashFiles('**/package-lock.json') }}
-      # This runs only when we don't have a cached node_modules folder
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+      - name: Load and Cache Dependencies
+        uses: ./.github/actions/cached-deps
       - name: Test code
         continue-on-error: true
         id: tests
@@ -55,16 +39,8 @@ jobs:
     steps:
       - name: Get Code
         uses: actions/checkout@v4
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: node_modules-deps-${{ hashFiles('**/package-lock.json') }}
-      # This runs only when we don't have a cached npm folder
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+      - name: Load and Cache Dependencies
+        uses: ./.github/actions/cached-deps
       - name: Build website
         id: build-website
         run: npm run build
