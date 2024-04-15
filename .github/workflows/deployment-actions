@@ -1,4 +1,4 @@
-name: Deployment-Composite-Actions
+name: Composite
 on: [push, workflow_dispatch]
   # push:
   #   branches:
