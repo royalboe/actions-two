@@ -80,5 +80,11 @@ jobs:
           echo "Something went wrong"
           echo "{{ toJSON(github) }}"
 
-
+  information:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Run JS Custom Action
+        uses: ./.github/actions/seploy-s3-javascript
 
