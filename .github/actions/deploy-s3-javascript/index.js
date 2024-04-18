@@ -7,9 +7,10 @@ function run() {
   const bucket = core.getInput('bucket', { required: true });
   const region = core.getInput('region', { required: true });
   const dist = core.getInput("dist-file", { required: true });
-
-  // Upload files
   
+  // Upload files
+  const s3Uri = `s3://${bucket}`
+  exec.exec(`aws s3 sync ${dist} ${s3Uri} --region ${region}`);
   core.notice('Hello form my custom JS action!')
 }
 
