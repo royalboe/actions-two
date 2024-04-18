@@ -11,7 +11,11 @@ function run() {
   // Upload files
   const s3Uri = `s3://${bucket}`
   exec.exec(`aws s3 sync ${dist} ${s3Uri} --region ${region}`);
-  core.notice('Hello form my custom JS action!')
+
+  const webUrl = `http://${bucket}.s3-websit- ${region}.amazonaws.com/`
+  
+  // Get output values
+  core.setOutput("web-url", webUrl);
 }
 
 run();

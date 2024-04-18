@@ -76,6 +76,9 @@ jobs:
         with:
           bucket: github-actions-royalboe
           dist-file: ./dist
+      - name: Output info
+        run: |
+          echo "Live URL: {{ steps.deploy.outputs.web-url }}"
   
   deploy-reusable:
     needs: build

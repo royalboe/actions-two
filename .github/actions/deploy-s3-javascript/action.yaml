@@ -11,6 +11,9 @@ inputs:
   dist-file:
     description: "dist file name"
     required: true
+outputs:
+  web-url:
+    description: "website url"
 runs:
   using: node20
   main: index.js
