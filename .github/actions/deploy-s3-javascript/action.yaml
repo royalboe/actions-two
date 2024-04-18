@@ -1,5 +1,16 @@
 name: "deploy to S3"
 description: "deploy to static website on S3"
+inputs:
+  bucket:
+    description: "S3 bucket name"
+    required: true
+  region:
+    description: "S3 bucket region"
+    default: "us-east-1"
+    required: false
+  dist-file:
+    description: "dist file name"
+    required: true
 runs:
   using: node20
   main: index.js
