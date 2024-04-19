@@ -8,7 +8,7 @@ inputs:
     description: "S3 bucket region"
     default: "us-east-1"
     required: false
-  dist-file:
+  dist-folder:
     description: "dist file name"
     required: true
 outputs:
