@@ -12,7 +12,7 @@ inputs:
     description: "dist file name"
     required: true
 outputs:
-  website-url:
+  web-url:
     description: "website url"
   
 runs:
