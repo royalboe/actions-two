@@ -12,7 +12,7 @@ function run() {
   const s3Uri = `s3://${bucket}`
   exec.exec(`aws s3 sync ${dist} ${s3Uri} --region ${region}`);
 
-  const webUrl = `http://${bucket}.s3-websit- ${region}.amazonaws.com/`
+  const webUrl = `http://${bucket}.s3-website-${region}.amazonaws.com/`
   
   // Get output values
   core.setOutput("web-url", webUrl);
